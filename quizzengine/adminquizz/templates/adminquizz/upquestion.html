@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Quizz Engine</h1>
+        <p>Modifier la question</p>
+    </div>
+    <form action="/adminquizz/upquestion/{{idQuestion}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Enregistrer">
+    </form>
+    {% for r in responses %}
+    {{r.text}} {{r.type}}<a href="/adminquizz/upanswer/{{r.id}}"> Modifier </a>
+    <a href="/adminquizz/delanswer/{{r.id}}"> Supprimer</a><br>
+    {% endfor %}
+    <a href="/adminquizz/addanswer/{{idQuestion}}"><input type="submit" value="Ajouter une reponse"></a>
+    <a href="/adminquizz/"><input type="submit" value="Retour au qcm"></a>
+</div>
+{% endblock %}

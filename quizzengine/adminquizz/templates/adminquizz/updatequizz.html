@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load arrayAccess %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Quizz Engine</h1>
+        <p>Ajouter un quizz</p>
+    </div>
+    <form action="/adminquizz/updatequizz/{{id}}" method="post">
+        {% csrf_token %}
+    {{form.as_p}}
+        <input type="submit" value="Enregistrer">
+    </form>
+    {% for q in questions %}
+
+        {% if uniqueAnswerTrue|index:q.id %}
+            <span style="color: green">T </span>
+        {% else %}
+            <span style="color: red">F </span>
+        {% endif %}
+    {{q.name}} <a href="/adminquizz/upquestion/{{q.id}}">Modifier </a><a href="/adminquizz/delquestion/{{q.id}}"> Supprimer</a><br>
+    {% endfor %}
+    <a href="/adminquizz/addquestion/{{id}}"><input type="submit" value="Ajouter une question"></a>
+    <a href="/adminquizz/"><input type="submit" value="Retour au qcm"></a>
+</div>
+{% endblock %}

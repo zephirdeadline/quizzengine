@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Quizz Engine</h1>
+        <p>Ajouter un reponse</p>
+    </div>
+    <form action="/adminquizz/addanswer/{{id}}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Ajouter la reponse">
+    </form>
+    <a href="/adminquizz/"><input type="submit" value="Retour au qcm"></a>
+</div>
+{% endblock %}

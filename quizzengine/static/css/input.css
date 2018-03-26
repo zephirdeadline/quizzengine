@@ -1,0 +1,13 @@
+input[type=text], input[type=email], input[type=password]
+{
+    width: 100%;
+}
+input[type=submit]
+{
+    width: 100%;
+    color: white;
+    font-size: large;
+    text-align: center;
+    background-color: #2e6da4;
+}
+

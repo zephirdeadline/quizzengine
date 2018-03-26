@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Bienvenue sur QuizzEngine</h1>
+    <p>Inscrivez-vous</p>
+      <a href="/login/signin/">Connexion</a>
+  </div>
+        <form action="/login/signup/" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <input type="submit" value="Enregistrer">
+        </form>
+  </div>
+{% endblock %}

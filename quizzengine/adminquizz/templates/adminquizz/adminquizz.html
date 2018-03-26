@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Quizz Engine</h1>
+        <p>Administration</p>
+        <a href="/login/logout/">Déconnexion</a>
+    </div>
+    <table class="table table-condensed">
+        <tr style="font-weight: bold;">
+            <td>id</td>
+            <td>nom</td>
+            <td>Niveau</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% for q in quizz %}
+        <tr class="info">
+            <td>{{q.id}}</td>
+            <td>{{q.name}}</td>
+            <td>{{q.level}}</td>
+            <td><a href="/adminquizz/updatequizz/{{q.id}}" class="btn btn-primary btn-xs" role="button">Modifier</a></td>
+            <td><a href="/adminquizz/delete/{{ q.id }}" class="btn  btn-xs btn-danger" role="button">Supprimer</a></td>
+            <td><a href="/quizz/{{ q.id }}/100000/{% now "jSFYHis" %}" class="btn  btn-xs btn-primary" role="button">Tester</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <ul class="list-group">
+        <a href="/adminquizz/addquizz" style="color: white; font-size: large"><li class="list-group-item" style="text-align: center;background-color: #2e6da4;">Ajouter un quizz</li></a>
+    </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+    <div class="jumbotron">
+        <h1>QuizzEngine</h1>
+        <p>Voici ton resultat!<br>
+            {{quizz.name}}</p>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar"
+             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+            <span class="bardisplay">100%</span>
+        </div>
+    </div>
+    <p style="text-align: center"><b>
+        {% if final >= 10 %}
+        Félicitation,
+        {% else %}
+        Dommage,
+        {% endif %}
+        tu as obtenu {{ good }}/{{ total }} soit <font size="10pt" style="color: red">{{ final|floatformat:1 }}/20</font></b><br>
+
+    <ul class="list-group">
+  {% for q, a in correction.items %}
+            <li class="list-group-item">La réponse à : "{{ q }}" était "{{ a.text }}"</li>
+        {% endfor %}
+</ul>
+
+
+    </p>
+
+</div>
+
+
+
+{% endblock %}
